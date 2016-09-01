@@ -5,11 +5,18 @@ angular.module('app').controller('controller', function ($scope, service1, $q, p
 
     $scope.my6yearOldWantsAUnicorn = function () {
         var promise = service1.getMeAUnicorn();
-        
+
         promise.then(function(whatIaskedFor){
             $scope.theThingWeAskedFor = whatIaskedFor;
-        })
-    }
+
+            //or
+          // service1.getMeAUnicorn()
+
+            //.then(function(whatIaskedFor){
+              //$scope.theThingWeAskedFor = whatIaskedFor;
+            //})
+        });
+    };
 
     $scope.my6yearOldWantsAUnicorn();
 
@@ -20,32 +27,32 @@ angular.module('app').controller('controller', function ($scope, service1, $q, p
         pokemonService.getPokemon().then(function(result){
             $scope.pokemon = result;
         }, function(){
-            
-        })
-            
-    }
-    
+
+        });
+
+    };
+
     function resolve(){
-        
+
     }
-    
+
     function reject(){
-        
+
     }
-    
+
     promise.then(resolve, reject);
-    
-    
+
+
 
     $scope.getPokemon = function(){
        $scope.getPokemonFromService();
-    }
+    };
 
 
 //
 
 
-   
+
 
 
     $scope.submitApplication = function () {
@@ -54,11 +61,11 @@ angular.module('app').controller('controller', function ($scope, service1, $q, p
             .then(validationService.checkEmailIsValid)
             .then(validationService.checkAddressIsValid)
             .then(brokerService.assignBrokerBasedOnAddress, errorService.handleInvalidAddress)
-            .then(loanService.calculateInterestRate)
+            .then(loanService.calculateInterestRate);
 
 
 
-    }
+    };
 
 
 
